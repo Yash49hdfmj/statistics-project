@@ -1,8 +1,22 @@
-
+# Python cache
 __pycache__/
 *.py[cod]
+
+# Jupyter checkpoints
 .ipynb_checkpoints
+
+# Environment files
 .env/
 venv/
-data/*.csv
+*.env
+
+# Logs
 *.log
+
+# Data files (optional — ignore big/temporary data)
+data/*.csv
+data/*.xlsx
+
+# OS or IDE generated files
+.DS_Store
+Thumbs.db
