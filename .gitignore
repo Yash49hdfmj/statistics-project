@@ -14,7 +14,7 @@ venv/
 *.log
 
 # Data files (optional — ignore big/temporary data)
-data/*.csv
+# data/*.csv
 data/*.xlsx
 
 # OS or IDE generated files

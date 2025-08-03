@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Housing Price Predictor</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <script src="{{ url_for('static', filename='script.js') }}"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="icon" href="{{ url_for('static', filename='house.webp') }}">
+</head>
+<body>
+
+  <!-- 🌄 Hero Banner -->
+  <div class="hero">
+    <img src="{{ url_for('static', filename='house2.png') }}" alt="Housing Market">
+    <div class="overlay-text">
+      <h1>A Statistical Odyssey into Residential Worth</h1>
+      <p>USING LINEAR REGRESSION</p>
+    </div>
+  </div>
+
+  <!-- 🧾 Form Section -->
+  <main>
+    <form method="POST" action="/">
+      <div class="form-group">
+        <label>Overall Quality</label>
+        <select name="OverallQual">
+          {% for val in overall_qual %}
+          <option value="{{ val }}">{{ val }}</option>
+          {% endfor %}
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label>Garage Capacity</label>
+        <select name="GarageCars">
+          {% for val in garage_cars %}
+          <option value="{{ val }}">{{ val }}</option>
+          {% endfor %}
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label>Full Bathrooms</label>
+        <select name="FullBath">
+          {% for val in full_bath %}
+          <option value="{{ val }}">{{ val }}</option>
+          {% endfor %}
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label>Fireplaces</label>
+        <select name="Fireplaces">
+          {% for val in fireplaces %}
+          <option value="{{ val }}">{{ val }}</option>
+          {% endfor %}
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label>Year Built</label>
+        <select name="YearBuilt">
+          {% for val in year_built %}
+          <option value="{{ val }}">{{ val }}</option>
+          {% endfor %}
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label>Above Ground Living Area (sq ft)</label>
+        <input type="number" name="GrLivArea" min="{{ grliv_min }}" max="{{ grliv_max }}" required>
+      </div>
+
+      <div class="form-group">
+        <label>Basement Area (sq ft)</label>
+        <input type="number" name="TotalBsmtSF" min="{{ bsmt_min }}" max="{{ bsmt_max }}" required>
+      </div>
+
+      <div class="form-group">
+        <label>First Floor Area (sq ft)</label>
+        <input type="number" name="1stFlrSF" min="{{ firstflr_min }}" max="{{ firstflr_max }}" required>
+      </div>
+
+      <button type="submit">💸 Predict Price</button>
+    </form>
+
+    {% if predicted_price %}
+      <div class="result">
+        <h3>Predicted Price:</h3>
+        <p>${{ predicted_price }}</p>
+      </div>
+    {% endif %}
+  </main>
+
+  <footer>
+    <p>🔗 Presented by <strong>Yash K Gadhave</strong> | <a href="https://github.com/Yash49hdfmj/statistics-project" target="_blank">GitHub Repo</a></p>
+  </footer>
+
+</body>
+</html>
